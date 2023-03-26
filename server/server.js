@@ -22,14 +22,18 @@ app.get('/', async (req,res) => {
         message: 'Hello From AI'
     })
 });
-
+const headers = {
+    'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+}
 app.post('/', async (req,res) => {
     try {
         const prompt = req.body.prompt;
         const response  = await openai.createChatCompletion({
+
             model: "gpt-3.5-turbo",
             messages:[  { role: "user", content: `${prompt}` }] ,
-            temperature: 0,
+           
+            temperature: 0.7,
             max_tokens: 3000,
             top_p: 1,
             frequency_penalty: 0.5,
