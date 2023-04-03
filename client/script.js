@@ -72,10 +72,10 @@ const handleSubmit = async (e) => {
 
   /////fetch from server
 
-  const response = await fetch('https://chatgpt-chatbot-gm42.onrender.com', {
+  const response = await fetch('http://localhost:5000', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       prompt: data.get('prompt'),
@@ -94,9 +94,9 @@ const handleSubmit = async (e) => {
     typeText(messageDiv, parsedData);
   } else {
     const err = await response.text();
-    messageDiv.innerHTML = "something went wrong";
+    messageDiv.innerHTML = "Something Went Wrong";
     console.log(err);
-    console.log(response)
+    //console.log(response)
   }
 };
 
